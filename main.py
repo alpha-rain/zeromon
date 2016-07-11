@@ -1,7 +1,5 @@
 import psutil
 import json
-import systemInfo
-# import zmq
 import calendar
 import time
 import sys
