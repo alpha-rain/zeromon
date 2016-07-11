@@ -1,6 +1,6 @@
 # zeromon
 
-installing dependencies:
-pip install psutil
-pip install pyzmq
+installing dependencies:<br>
+pip install psutil<br>
+pip install pyzmq<br>
 pip install pycpuinfo
