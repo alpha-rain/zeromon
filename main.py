@@ -1,8 +1,7 @@
-import psutil
+import sys
 import json
 import calendar
 import time
-import sys
 import comms
 
 sys.path.insert(0, './util')
@@ -12,11 +11,11 @@ import memoryUtil
 import diskUtil
 import networkUtil
 
+VERSION = '1.0'
 
-version = '1.0'
-
-def newSystemData():
-    jsondata =  '{' + packetInfo()
+def new_system_data():
+    """makes json string with system performance data to send out"""
+    jsondata = '{' + packet_info()
     jsondata += ',"pc-details":{'
     jsondata += osUtil.info()
     jsondata += ','
@@ -26,22 +25,23 @@ def newSystemData():
     jsondata += ','
     jsondata += diskUtil.info()
     jsondata += ','
-    jsondata += networkUtil.info()     
+    jsondata += networkUtil.info()
     jsondata += '}}'
     return jsondata
 
-def packetInfo():
-    jsondata = '"packet-info":{"version":"' + version + '","time":'
+def packet_info():
+    """gives info about the packet version and time packet made/sent"""
+    jsondata = '"packet-info":{"version":"' + VERSION + '","time":'
     jsondata += str(calendar.timegm(time.gmtime()))
     jsondata += '}'
     return jsondata
 
 def schedule(comm):
     print('ow')
-    newSystemData()
+    new_system_data()
     time.sleep(1)
     while True:
-        jsondata = json.loads(newSystemData())
+        jsondata = json.loads(new_system_data())
         comm.send(jsondata)
         time.sleep(5)
     
@@ -52,5 +52,3 @@ with open('config.json') as json_file:
     commsConfig = json_data['endpoint-locations']
     comm.config(commsConfig)
 schedule(comm)
-schedule()
-newSystemData()
