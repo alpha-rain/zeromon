@@ -1,0 +1,29 @@
+{
+    "interval": 5,
+    "interval-amount": "sec",    
+    "endpoint-locations": [
+        {
+            "type": "zeromq",
+            "connection-type": "push",
+            "connection-point": "server",
+            "location": "tcp://127.0.0.1:5557",
+            "compression": true,
+            "encryption": true,
+            "interval-send": 2
+        }
+    ],
+    "monitors": [
+        {
+            "name": "cpuUitl",
+            "interval": 4,
+            "location": "inapp",
+            "launch-params": ""
+        },
+        {
+            "name": "cpu",
+            "interval": 2,
+            "location": "external",
+            "launch-params": ""
+        }
+    ]
+}

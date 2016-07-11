@@ -1,0 +1,5 @@
+*.pyc
+/testJson
+data.json
+testout.json
+/__pycache__
