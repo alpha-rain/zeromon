@@ -1,6 +1,6 @@
 import datetime
 import psutil
-import cpuinfo
+# import cpuinfo
 import platform
 import json
 import re
