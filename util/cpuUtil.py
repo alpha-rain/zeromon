@@ -1,22 +1,22 @@
 import datetime
 import psutil
-import cpuinfo
+# import cpuinfo
 import platform
 import json
 import re
 import tojson
 
 def info():
-    cpuInfo = cpuinfo.get_cpu_info()
+    # cpuInfo = cpuinfo.get_cpu_info()
 
     jsondata = '"cpu":{"info":{'
-    jsondata += '"name":"'
-    jsondata += cpuInfo['brand']
-    jsondata += '","architecture":"'
-    jsondata += cpuInfo['arch']
-    jsondata += '","speed":"'
-    jsondata += cpuInfo['hz_advertised']
-    jsondata += '","cores":{"real":'
+    # jsondata += '"name":"'
+    # jsondata += cpuInfo['brand']
+    # jsondata += '","architecture":"'
+    # jsondata += cpuInfo['arch']
+    # jsondata += '","speed":"'
+    # jsondata += cpuInfo['hz_advertised']
+    jsondata += 'cores":{"real":'#","
     jsondata += str(psutil.cpu_count() - psutil.cpu_count(logical=False))
     jsondata += ',"hyper":'
     jsondata += str(psutil.cpu_count(logical=False))
