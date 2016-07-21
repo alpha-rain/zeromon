@@ -36,12 +36,19 @@ def packet_info():
     jsondata += '}'
     return jsondata
 
+def write_file(data):
+    target = open('testout.json', 'w')
+    target.write(data)
+    target.close()
+
 def schedule(comm):
     print('ow')
     new_system_data()
     time.sleep(1)
     while True:
-        jsondata = json.loads(new_system_data())
+        data = new_system_data()
+        write_file(data)
+        jsondata = json.loads(data)
         comm.send(jsondata)
         time.sleep(5)
     
